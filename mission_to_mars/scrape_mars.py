@@ -8,17 +8,15 @@ import time
 
 
 def init_browser():
-    # @NOTE: Replace the path with your actual path to the chromedriver
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
     return Browser("chrome", **executable_path, headless=False)
 
 
 def scrape_info():
-    executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = init_browser()
 
+    # create empty dictionary to store variables
     mars = {}
-
 
     # ------------------
     # Mars News
