@@ -6,11 +6,9 @@ from splinter import Browser
 import pandas as pd
 import time
 
-
 def init_browser():
-    executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-    return Browser("chrome", **executable_path, headless=False)
-
+    executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
+    return Browser('chrome', **executable_path, headless=False)
 
 def scrape_info():
     browser = init_browser()
@@ -20,7 +18,7 @@ def scrape_info():
 
     # ------------------
     # Mars News
-    url = 'https://mars.nasa.gov/news'
+    url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
 
     # Create BeautifulSoup object
@@ -28,12 +26,12 @@ def scrape_info():
     soup = bs(html, 'html.parser')
 
     # Collect the latest News Title and Paragraph Text
-    results = soup.select_one("ul.item_list li.slide")
-
+    results = soup.find('div', class_="list_text")
+    
     # news title results
-    news_title = results.find('div', class_='content_title').get_text()
+    news_title = results.find('div', class_='content_title').text
     # paragraph results
-    news_p = results.find('div', class_='article_teaser_body').get_text()
+    news_p = results.find('div', class_='article_teaser_body').text
 
     # add to dictionary
     mars["news_title"] = news_title
