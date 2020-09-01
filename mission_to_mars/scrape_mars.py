@@ -43,8 +43,10 @@ def scrape_info():
     # JPL Mars Space Images - Featured Image
     jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(jpl_url)
+    
     browser.find_by_id('full_image').click()
     time.sleep(2)
+    
     browser.click_link_by_partial_text('more info')
     html=browser.html
     soup = bs(html, 'html.parser')
