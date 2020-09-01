@@ -8,6 +8,7 @@
     <title>Misson to Mars</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,29 +23,41 @@
         <p>{{ mars.news_p }}</p>
     </div>
     
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-8-md">
+            <div class="col-md-8">
                 <h3>Featured Mars Image</h3>
-                <img src= "{{ mars.mars_image }}" alt="Featured Image of Mars">
+                <img src= "{{ mars.featured_img }}" alt="Featured Image of Mars" class="responsive_img">
             </div>
             <div class="row col-md-4">
                 <h4>Mars Facts</h4>
                 <div class="table-responsive">
                     <table>
-                        {{ mars.mars_html }}
+                        {{ mars.facts }}
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid">
-        <h3>Mars Hemispheres</h3>
+    <div class="container">
+        <h3 style="text-align:center">Mars Hemispheres</h3>
         <hr />
-        <div class="container-fluid">
-            {% for i in hemisphere %}
-            <div class="row">
+        <div class="container">
+            
+            <!-- {% for i in hemisphere %}
+            
+            <div class="col-lg-4">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ mars.hemisphere.title }}</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Is a top five favorite movie</h6>
+                        <p class="card-text">Search <a href="https://www.imdb.com/">IMDB</a> for more info!</p>
+                    </div>
+                </div>
+            </div> -->
+            
+            <!-- <div class="row">
                 <div class="col-sm-3 col-md-6">
                     <div class="card" style="width: 18rem;">
                         <img src="{{ mars.hemisphere.img_url }}" class="card-img-top" alt="...">
@@ -75,8 +88,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            
             {% endfor %}
+
         </div>
         
     </div>
